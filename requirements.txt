@@ -9,4 +9,4 @@ python-dotenv
 sentence-transformers
 pyt2s
 pydub
-simpleaudio
+simpleaudio == 1.0.4
