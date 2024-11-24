@@ -6,6 +6,7 @@ from pinecone import Pinecone
 from components import main_prompt, rephrase_prompt, ChatGroq, Memory
 import streamlit as st
 import os
+import nltk
 
 PINECONE_API_KEY = st.secrets["PINECONE_API_KEY"]
 HF_TOKEN = st.secrets["HF_TOKEN"]
@@ -17,6 +18,7 @@ if "memory" not in st.session_state:
 @st.cache_resource
 def setup_retriever():
     #Connecting to the vector db
+    nltk.download('punkt_tab')
     index_name = "resume-assistant"
     pc = Pinecone(api_key=PINECONE_API_KEY)
     index = pc.Index(index_name)
