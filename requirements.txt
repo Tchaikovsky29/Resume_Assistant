@@ -1,0 +1,12 @@
+SpeechRecognition
+streamlit
+langchain
+langchain-community
+pinecone
+pinecone-text
+groq
+python-dotenv
+sentence-transformers
+pyt2s
+pydub
+simpleaudio
