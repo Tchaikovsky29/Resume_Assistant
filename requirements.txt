@@ -5,7 +5,6 @@ langchain-community
 pinecone
 pinecone-text
 groq
-python-dotenv
 sentence-transformers
 pyt2s
 pydub

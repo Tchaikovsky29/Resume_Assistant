@@ -1,16 +1,14 @@
-from dotenv import load_dotenv
 import os
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Pinecone
 from pinecone_text.sparse import BM25Encoder
 from langchain_community.retrievers import PineconeHybridSearchRetriever
 from pinecone import Pinecone
+import streamlit as st
 
-load_dotenv()
-
-PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
-HF_TOKEN = os.getenv('HF_TOKEN')
-GROQ_API_KEY = os.getenv('GROQ_API_KEY')
+PINECONE_API_KEY = st.secrets["PINECONE_API_KEY"]
+HF_TOKEN = st.secrets["HF_TOKEN"]
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 
 #Connecting to the vector db
 index_name = "resume-assistant"

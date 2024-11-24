@@ -1,5 +1,3 @@
-from dotenv import load_dotenv
-import os
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Pinecone
 from pinecone_text.sparse import BM25Encoder
@@ -7,12 +5,11 @@ from langchain_community.retrievers import PineconeHybridSearchRetriever
 from pinecone import Pinecone
 from components import main_prompt, rephrase_prompt, ChatGroq, Memory
 import streamlit as st
+import os
 
-load_dotenv()
-
-PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
-HF_TOKEN = os.getenv('HF_TOKEN')
-GROQ_API_KEY = os.getenv('GROQ_API_KEY')
+PINECONE_API_KEY = st.secrets["PINECONE_API_KEY"]
+HF_TOKEN = st.secrets["HF_TOKEN"]
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 
 if "memory" not in st.session_state:
     st.session_state["memory"] = Memory()
@@ -49,4 +46,3 @@ def rag_chain(question):
 
     st.session_state["memory"].add_mem(human_message=question, AI_message=response)
     return response
-
