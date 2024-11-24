@@ -2,7 +2,7 @@ import streamlit as st
 import speech_recognition as sr
 from io import BytesIO
 from rag_chain import rag_chain
-from components import Memory, speak_text
+from components import Memory
 
 # Initialize session state for conversation
 if "conversation" not in st.session_state:
@@ -32,8 +32,7 @@ chat_html = """
 """.format(messages="<br><br>".join(st.session_state["conversation"]))
 
 st.components.v1.html(chat_html, height=350)
-if len(st.session_state["memory"].memory)>0:
-    speak_text(st.session_state["memory"].memory[-1]["AI"])
+
 @st.fragment
 def get_text_input():
     query = ""

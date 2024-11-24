@@ -1,10 +1,4 @@
 from groq import Groq
-import pyt2s
-from pyt2s.services import stream_elements
-import pyt2s.services
-from pydub import AudioSegment
-import simpleaudio as sa
-import io 
 
 class mem_cell():
     def __init__(self, human_message, AI_message) -> None:
@@ -70,17 +64,3 @@ class ChatGroq():
     
     def pass_prompt(self, prompt):
         self.prompt = prompt
-
-def speak_text(text):
-    # Fetch TTS audio data as bytes
-    data = stream_elements.requestTTS(text, stream_elements.Voice.Amy.value)
-
-    # Convert bytes to AudioSegment
-    audio = AudioSegment.from_file(io.BytesIO(data), format="mp3")  # Assuming MP3 format
-
-    # Play audio using simpleaudio
-    playback = sa.play_buffer(audio.raw_data, 
-                               num_channels=audio.channels, 
-                               bytes_per_sample=audio.sample_width, 
-                               sample_rate=audio.frame_rate)
-    playback.wait_done()

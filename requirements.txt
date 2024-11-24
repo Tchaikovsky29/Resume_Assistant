@@ -6,7 +6,4 @@ pinecone
 pinecone-text
 groq
 sentence-transformers
-pyt2s
-pydub
-simpleaudio == 1.0.4
 nltk
